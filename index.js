@@ -10,7 +10,7 @@ let options = {
     className: 'doc'
 };
 
-md = md('commonmark').enable([
+md = md('default').enable([
     'smartquotes'
 ]).use(anchor, {
     slugify: slugify,
