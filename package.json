@@ -1,7 +1,7 @@
 {
-  "name": "markdown-it-react-loader",
-  "version": "0.0.9",
-  "description": "",
+  "name": "rh-markdown-react-loader",
+  "version": "1.0.2",
+  "description": "rh react markdown",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

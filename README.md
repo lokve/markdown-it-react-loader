@@ -2,7 +2,10 @@
 imports:
     import {Loading} from 'react-gm';
 ---
-# markdown-it-react-loader
+
+本npm包由markdown-it-react-loader修改而来，因为markdown-it-react-loader不能配置markdown-it的模式，就稍微改了一下
+
+# rh-markdown-react-loader
 
 用Markdown提供一份直观的React文档，有可运行的示例，有示例源代码，有示例的说明。
 
@@ -16,14 +19,14 @@ imports:
 
 ## Install
 
-`npm install markdown-it-react-loader`
+`npm install rh-markdown-react-loader`
 
 在 webpack 中加入 loader 
 
 ```js
 {
     test: /\.md$/,
-    loader: 'babel!markdown-it-react-loader',
+    loader: 'babel!rh-markdown-react-loader',
     options: {
         className: 'doc',
         mdRule: 'default',
