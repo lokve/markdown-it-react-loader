@@ -23,7 +23,11 @@ imports:
 ```js
 {
     test: /\.md$/,
-    loader: 'babel!markdown-it-react-loader'
+    loader: 'babel!markdown-it-react-loader',
+    options: {
+        className: 'doc',
+        mdRule: 'default',
+    }
 }
 ```
 
@@ -38,17 +42,18 @@ import ReadMe from '../README.md';
 ### options
 
 - `className` 默认'doc'，页面容器的class
+- `mdRule` markdown-it 规则， 默认default, 详细选项可看markdown-it的api
 
 ```js
 // webpack.config.js
-module.export = {
+{
     //...省略
-    markdownItReact: function () {
-        return {
-            className: 'doc' // 默认也是doc
-        };
+    loader: 'babel!markdown-it-react-loader',
+    options: {
+        className: 'doc',
+        mdRule: 'default',
     }
-};
+}
 ```
 
 具体见`webpack.config.js`

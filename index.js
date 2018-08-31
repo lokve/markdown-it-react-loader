@@ -3,14 +3,16 @@ const anchor = require('markdown-it-anchor');
 const frontMatter = require('front-matter');
 const highlight = require('highlight.js');
 const slugify = require('transliteration').slugify;
+const { getOptions } = require('loader-utils');
 
 let md = require('markdown-it');
 
 let options = {
-    className: 'doc'
+    className: 'doc',
+    mdRule: 'default'
 };
 
-md = md('default').enable([
+md = md(options.mdRule).enable([
     'smartquotes'
 ]).use(anchor, {
     slugify: slugify,
@@ -108,10 +110,13 @@ const formatClosing = (flag) => {
 
 
 module.exports = function (source) {
+    const cusOptions = getOptions(this) || {};
+
+    console.log('cusOptions',cusOptions)
     this.cacheable();
 
     // init options
-    Object.assign(options, this.options.markdownItReact ? this.options.markdownItReact() : {});
+    Object.assign(options, cusOptions);
 
     const {body, attributes: {imports: importMap}} = frontMatter(source);
     const imports = 'import React from \'react\'; ' + importMap;

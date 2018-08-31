@@ -25,13 +25,11 @@ module.exports = {
             exclude: /dict-zi\.js/
         }, {
             test: /\.md$/,
-            loader: 'babel!../index.js'
+            loader: 'babel!../index.js',
+            options: {
+                className: 'rh-doc',
+            }
         }],
         noParse: ['react-gm/dist/react-gm.js']
-    },
-    markdownItReact: function () {
-        return {
-            className: 'doc' // 默认也是doc
-        };
     }
 };
