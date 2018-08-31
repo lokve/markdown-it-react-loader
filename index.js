@@ -112,7 +112,6 @@ const formatClosing = (flag) => {
 module.exports = function (source) {
     const cusOptions = getOptions(this) || {};
 
-    console.log('cusOptions',cusOptions)
     this.cacheable();
 
     // init options
