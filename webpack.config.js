@@ -13,23 +13,31 @@ module.exports = {
         filename: '[name].bundle.js',
         publicPath: '/markdown-it-react-loader/docs/build/'
     },
-    resolve: {
-        alias: {
-            'react-gm': 'react-gm/dist/react-gm.js'
-        }
-    },
     module: {
-        loaders: [{
-            test: /\.js$/,
-            loader: 'babel',
-            exclude: /dict-zi\.js/
-        }, {
-            test: /\.md$/,
-            loader: 'babel!../index.js',
-            options: {
-                className: 'rh-doc',
+        rules: [
+            {
+                test: /\.js$/,
+                use: 'babel-loader',
+                exclude: /dict-zi\.js/
+            }, {
+                test: /\.md$/,
+                use: [
+                    'babel-loader',
+                    {
+                        loader: './index.js',
+                        options: {
+                          className: 'doc',
+                        }
+                    }
+                ],
+            }, {
+                test: /\.less/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    { loader: 'less-loader', options: { javascriptEnabled: true } }
+                ]
             }
-        }],
-        noParse: ['react-gm/dist/react-gm.js']
+        ],
     }
 };

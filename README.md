@@ -1,7 +1,9 @@
 ---
 imports:
-    import {Loading} from 'react-gm';
+    import {Spin} from 'antd';
 ---
+
+# 说明
 
 本npm包由markdown-it-react-loader修改而来，因为markdown-it-react-loader不能配置markdown-it的模式，就稍微改了一下
 
@@ -26,11 +28,15 @@ imports:
 ```js
 {
     test: /\.md$/,
-    loader: 'babel!rh-markdown-react-loader',
-    options: {
-        className: 'doc',
-        mdRule: 'default',
-    }
+    use: [
+        'babel-loader',
+        {
+            loader: 'rh-markdown-react-loader',
+            options: {
+              className: 'rh-doc',
+            }
+        }
+    ],
 }
 ```
 
@@ -51,7 +57,7 @@ import ReadMe from '../README.md';
 // webpack.config.js
 {
     //...省略
-    loader: 'babel!markdown-it-react-loader',
+    loader: 'rh-markdown-react-loader',
     options: {
         className: 'doc',
         mdRule: 'default',
@@ -93,9 +99,9 @@ import ReadMe from '../README.md';
 
 #### 引入其他库
 
-::: demo [react-gm](https://github.com/gmfe/react-gm)的Loading组件
+::: demo antd
 ```jsx
-<Loading/>
+<Spin/>
 ```
 :::
 
@@ -104,15 +110,15 @@ import ReadMe from '../README.md';
 ```js
 ---
 imports:
-    import {Loading} from 'react-gm';
+    import {Spin} from 'antd';
 ---
 ```
 
 然后
 ```
-    ::: demo [react-gm](https://github.com/gmfe/react-gm)的日历组件
+    ::: demo
     ```jsx
-    <Loading/>
+    <Spin/>
     ```
     :::
 ```
